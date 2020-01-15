@@ -6,12 +6,16 @@ const input = {
   'a': ['Move: left', 'd'],
   's': ['Move: down', 'w'],
   'd': ['Move: right', 'a'],
-  'e': ['Say: !!!'],
-  'q': ['Say: ???']
+}
+
+const messages = {
+  'e': 'Say: !!!',
+  'q': 'Say: ???'
 }
 
 module.exports= {
   IP,
   PORT,
-  input
+  input,
+  messages
 };

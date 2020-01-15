@@ -1,5 +1,8 @@
-const { input } = require('./constants');
+const { input } = require('./constants'); 
+const {messages} = require('./constants');
 
+
+let x;
 let connection;
 let invalidMove = '';
 
@@ -22,10 +25,19 @@ const handleUserInput = function (key) {
   if (key === '\u0003') {
     process.exit()
   }
-  if (key in input && key !== invalidMove) {
-    connection.write(input[key][0]);
-    invalidMove = input[key][1] === undefined ? invalidMove : input[key][1];
-  }
+    if (key in input && key !== invalidMove) {
+      clearInterval(x);
+      x = setInterval(() => {
+        connection.write(input[key][0]);
+      }, 50);
+      invalidMove = input[key][1] === undefined ? invalidMove : input[key][1];
+    }
+    if (key in messages) {
+      connection.write(messages[key]);
+    }
+
+
+
 }
 
 module.exports = { setupInput }
